@@ -6,7 +6,7 @@ body{
     /*background: #1111;*/
     background: url('daisies_background.jpg') no-repeat center center/cover;
     font-family: Arial, sans-serif;
-    color: white;
+    color: rgb(194, 120, 255);
 }
 
 .container {
