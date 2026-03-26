@@ -1,3 +1,60 @@
+// NEW LOGIC BELOW (test 3)
+
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const response = document.getElementById('response');
+
+// Load state
+async function loadState() {
+    const res = await fetch('/state');
+    const data = await res.json();
+
+    updateUI(data.choice);
+}
+
+// Update UI
+function updateUI(choice) {
+    if (choice === "yes") {
+        response.textContent = "woohoo 🎉";
+        response.style.display = "block";
+    } else if (choice === "no") {
+        response.textContent = "sorry 😔";
+        response.style.display = "block";
+    } else {
+        response.style.display = "none";
+    }
+}
+
+// YES button
+yesBtn.addEventListener('click', async () => {
+    const res = await fetch('/choose', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ choice: "yes" })
+    });
+
+    const data = await res.json();
+    updateUI(data.choice);
+});
+
+// NO button
+noBtn.addEventListener('click', async () => {
+    const res = await fetch('/choose', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ choice: "no" })
+    });
+
+    const data = await res.json();
+    updateUI(data.choice);
+});
+
+// Load on start
+loadState();
+
+/*
+OLD LOGIC BELOW (test 2)
+
 const button = document.getElementById('mainButton');
 const message = document.getElementById('message');
 
@@ -12,11 +69,11 @@ async function loadState() {
 // Update UI
 function updateUI(state) {
     if (state) {
-        button.textContent = "ON ❤️";
+        button.textContent = "SUREEEEEEE ❤️";
         button.style.backgroundColor = "green";
         message.style.display = "block";
     } else {
-        button.textContent = "OFF 💔";
+        button.textContent = "NO NOW GTFO 💔";
         button.style.backgroundColor = "red";
         message.style.display = "none";
     }
@@ -31,11 +88,12 @@ button.addEventListener('click', async () => {
     const data = await res.json();
     updateUI(data.state);
 });
+*/
 
 // Load on start
 loadState();
 
-/* OLD LOGIC BELOW
+/* OLD LOGIC BELOW (test 1)
 const button = document.getElementById('mainButton');
 
 // loading state

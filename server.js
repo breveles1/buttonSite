@@ -6,23 +6,27 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // GLOBAL STATE (persists while server is running)
-let buttonState = false;
+//let buttonState = false;
 
-// Get state
+// New State (null, yes, no)
+let choice = null;
+
+// Get current choice
 app.get('/state', (req, res) => {
-    res.json({ state: buttonState });
+    res.json({ choice });
 });
 
 // Toggle state
-app.post('/toggle', (req, res) => {
-    buttonState = !buttonState;
-    res.json({ state: buttonState });
+app.post('/choose', (req, res) => {
+    //buttonState = !buttonState;
+    choice = req.body.choice; // can be yeer or naur
+    res.json({ choice });
 });
 
 // OPTIONAL: reset (only you can call manually)
 app.post('/reset', (req, res) => {
-    buttonState = false;
-    res.json({ state: buttonState });
+    choice = null; //buttonState = false;
+    res.json({ choice });
 });
 
 app.listen(PORT, () => {
