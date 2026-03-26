@@ -18,7 +18,7 @@ function updateUI(choice) {
         response.textContent = "🎉LFG🎉 Meet me @ 1718 N Zaragoza RD, Ste B-2, El Paso, TX 79936, United States of America. (Due to your strict schedule you'll have to reach out to me via email to determine a date and time this weekend.";
         response.style.display = "block";
     } else if (choice === "no") {
-        response.textContent = "Dang idk what to say 🥀😔🎵I STILL SEE YOUR SHADOWS IN MY ROOM..🎵";
+        response.textContent = "Dang idk what to say 🥀😔 🎵I STILL SEE YOUR SHADOWS IN MY ROOM...🎵";
         response.style.display = "block";
     } else {
         response.style.display = "none";
